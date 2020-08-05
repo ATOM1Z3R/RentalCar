@@ -1,9 +1,5 @@
 ﻿using RentalCar.Data.ReservationData.IReservationData;
 using RentalCar.Models;
-using RentalCar.Models.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RentalCar.Data.ReservationData
