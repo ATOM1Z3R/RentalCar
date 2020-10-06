@@ -2,6 +2,7 @@
 using RentalCarUnitTests.ClassData;
 using RentalCarUnitTests.SeedData;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace RentalCarUnitTests
@@ -19,7 +20,7 @@ namespace RentalCarUnitTests
 
         [Theory]
         [ClassData(typeof(UserClassData))]
-        public async void Get_ShouldReturnCorrectRecord(string id, string username, string firstname, string lastname)
+        public async Task Get_ShouldReturnCorrectRecord(string id, string username, string firstname, string lastname)
         {
             var userRead = new UserDataRead(_context);
             var userGet = await userRead.GetAsync(id);
@@ -31,7 +32,7 @@ namespace RentalCarUnitTests
         }
 
         [Fact]
-        public async void Remove_ShouldRemoveRecord()
+        public async Task Remove_ShouldRemoveRecord()
         {
             var userRemove = new UserDataRemove(_context);
             var user = _context.Users.Find(UserSeed.UsersList[0].Id);
@@ -42,7 +43,7 @@ namespace RentalCarUnitTests
         }
 
         [Fact]
-        public async void Remove_ShouldReturnRemovedRecord()
+        public async Task Remove_ShouldReturnRemovedRecord()
         {
             var userRemove = new UserDataRemove(_context);
             var user = _context.Users.Find(UserSeed.UsersList[1].Id);

@@ -3,6 +3,7 @@ using RentalCar.Models;
 using RentalCarUnitTests.ClassData;
 using RentalCarUnitTests.SeedData;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace RentalCarUnitTests
@@ -21,7 +22,7 @@ namespace RentalCarUnitTests
 
         [Theory]
         [ClassData(typeof(RentalBaseClassData))]
-        public async void Get_ShouldReturnCorrectRecord(int id, string city, string street, int number)
+        public async Task Get_ShouldReturnCorrectRecord(int id, string city, string street, int number)
         {
             var rentalBaseDataRead = new RentalBaseDataRead(_context);
             var rentalBaseGet = await rentalBaseDataRead.GetAsync(id);
@@ -33,7 +34,7 @@ namespace RentalCarUnitTests
         }
 
         [Fact]
-        public async void Write_ShouldCreateNewRecord()
+        public async Task Write_ShouldCreateNewRecord()
         {
             var rentalBase = new RentalBase
             {
@@ -50,7 +51,7 @@ namespace RentalCarUnitTests
         }
 
         [Fact]
-        public async void Remove_ShouldRemoveRecord()
+        public async Task Remove_ShouldRemoveRecord()
         {
             var rentalBaseRemove = new RentalBaseDataDelete(_context);
             var rentalBase = _context.RentalBases.Find(RentalBaseSeed.rentalBasesList[0].RentalBaseId);
@@ -61,7 +62,7 @@ namespace RentalCarUnitTests
         }
 
         [Fact]
-        public async void Remove_ShouldReturnRemovedRecord()
+        public async Task Remove_ShouldReturnRemovedRecord()
         {
             var rentalBaseRemove = new RentalBaseDataDelete(_context);
             var rentalBase = _context.RentalBases.Find(RentalBaseSeed.rentalBasesList[1].RentalBaseId);

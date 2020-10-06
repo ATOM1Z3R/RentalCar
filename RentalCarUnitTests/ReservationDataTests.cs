@@ -3,6 +3,7 @@ using RentalCar.Models;
 using RentalCarUnitTests.ClassData;
 using RentalCarUnitTests.SeedData;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace RentalCarUnitTests
@@ -21,7 +22,7 @@ namespace RentalCarUnitTests
 
         [Theory]
         [ClassData(typeof(ReservationClassData))]
-        public async void Get_ShouldReturnCorrectRecord(int id, int vehicleId, int numberOfDays)
+        public async Task Get_ShouldReturnCorrectRecord(int id, int vehicleId, int numberOfDays)
         {
             var reservationDataRead = new ReservationDataRead(_context);
 
@@ -43,7 +44,7 @@ namespace RentalCarUnitTests
         }
 
         [Fact]
-        public async void Write_ShouldCreateRecord()
+        public async Task Write_ShouldCreateRecord()
         {
             var reservation = new Reservation
             {
@@ -60,7 +61,7 @@ namespace RentalCarUnitTests
         }
 
         [Fact]
-        public async void Remove_ShouldRemoveRecord()
+        public async Task Remove_ShouldRemoveRecord()
         {
             var reservationRemove = new ReservationDataRemove(_context);
             var reservation = _context.Reservations.Find(ReservationSeed.reservationList[0].ReservationId);
@@ -71,7 +72,7 @@ namespace RentalCarUnitTests
         }
 
         [Fact]
-        public async void Remove_ShouldReturnRemovedRecord()
+        public async Task Remove_ShouldReturnRemovedRecord()
         {
             var reservationRemove = new ReservationDataRemove(_context);
             var reservation = _context.Reservations.Find(ReservationSeed.reservationList[0].ReservationId);
